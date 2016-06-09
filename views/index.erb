@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Colour picker</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<link rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<h1>Colour Lover Colour Palettes</h1>
+					<form action="/colour/" method="POST">
+					    <div class="row control-group">
+					    	<div class="form-group col-xs-12 floating-label-form-group controls">
+					    		<input class="form-control" type="text" name="colour" placeholder="Colour (hex please)">
+					    	</div>
+					    </div>
+					    <input class="form-control" type="submit">
+					</form>
+					<% if locals[:colour] %>
+						<h3><%= locals[:colour] %></h3>
+					<% end %>
+					<% if locals[:palette_array] && locals[:palette_array].any? %>
+						<% locals[:palette_array].each_with_index do |palette, index| %>
+							<p>Palette: <%= index %></p>
+							<% palette.each do |colour| %>
+								<div style="background-color:<%= colour %>">&nbsp;</div>
+							<% end %>
+							<br>
+						<% end %>
+					<% else %>
+						<p>No palettes to show.</p>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
