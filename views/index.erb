@@ -23,7 +23,7 @@
 					<% end %>
 					<% if locals[:palette_array] && locals[:palette_array].any? %>
 						<% locals[:palette_array].each_with_index do |palette, index| %>
-							<p>Palette: <%= index %></p>
+							<p>Palette: <%= index + 1 %></p>
 							<% palette.each do |colour| %>
 								<div style="background-color:<%= colour %>">&nbsp;</div>
 							<% end %>
