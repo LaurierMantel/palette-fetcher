@@ -18,14 +18,6 @@ def get_palette(colour)
   return values
 end
 
-def to_rgb(hex)
-  hex.scan(/../).map{ |val| val.to_i(16) }
-end
-
-def to_hex(rgb)
-  rgb.map{ |val| val.to_s(16) }.join
-end
-
 get "/" do
   erb :index
 end
@@ -35,12 +27,3 @@ post "/colour/" do
   palettes = get_palette(colour)
   erb :index, locals: { palette_array: palettes, colour: colour }
 end
-
-
-# dc_hex = Miro::DominantColors.new(IMAGE_FILE).to_hex
-# dc_rgb = Miro::DominantColors.new(IMAGE_FILE).to_rgb
-# yilun = [[33.90179555555555, 28.288097777777786, 28.00142222222222], [41.89066666666667, 35.05601111111112, 34.819311111111105]].first
-# yilun_int = yilun.map{ |val| Integer(val) }
-# palettes =  get_palette(to_hex(yilun_int))
-# debugger
-# puts palettes
